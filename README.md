@@ -15,36 +15,23 @@ go get -u github.com/peterhellberg/giphy/cmd/giphy
 
 ### Usage
 
-```bash
-giphy trending
 
- 0 - http://media0.giphy.com/media/kMM7XbRvSgpAA/giphy.gif
- 1 - http://media2.giphy.com/media/lgcaIKboeo8ZW/giphy.gif
- 2 - http://media2.giphy.com/media/vcyroBgx2nrby/giphy.gif
- 3 - http://media2.giphy.com/media/UVHUzM00JWsDu/giphy.gif
- 4 - http://media3.giphy.com/media/9qAgUlR16YgYo/giphy.gif
- 5 - http://media1.giphy.com/media/gMlBLPI3zCsXC/giphy.gif
- 6 - http://media3.giphy.com/media/B81XkL3dtnWTe/giphy.gif
- 7 - http://media3.giphy.com/media/Iu7nC0GDWxu9y/giphy.gif
- 8 - http://media0.giphy.com/media/B5oEcYBqZe22s/giphy.gif
- 9 - http://media3.giphy.com/media/rjr9etfxrdP3i/giphy.gif
-10 - http://media3.giphy.com/media/SYQpxVZGn56BG/giphy.gif
-11 - http://media1.giphy.com/media/LJ5iCphkPZVPW/giphy.gif
-12 - http://media4.giphy.com/media/d8YBM0IgPszle/giphy.gif
-13 - http://media0.giphy.com/media/GKleSu1rgesSc/giphy.gif
-14 - http://media0.giphy.com/media/U1YnBiy8rNUqI/giphy.gif
-15 - http://media2.giphy.com/media/Ekla75geXUIYo/giphy.gif
-16 - http://media2.giphy.com/media/FNfJO1GJHkbi8/giphy.gif
-17 - http://media1.giphy.com/media/ODzsRb1t8nBv2/giphy.gif
-18 - http://media0.giphy.com/media/13ln9K5TWkNTLa/giphy.gif
-19 - http://media0.giphy.com/media/dmucaITbJPSY8/giphy.gif
-20 - http://media0.giphy.com/media/zE0RFo8wgHJHW/giphy.gif
-21 - http://media0.giphy.com/media/o0rzRKtJlO1na/giphy.gif
-22 - http://media4.giphy.com/media/60RaCtUr2hXTa/giphy.gif
-23 - http://media4.giphy.com/media/8Bbl0U61TN6DK/giphy.gif
-24 - http://media4.giphy.com/media/aN1pVF1L997rO/giphy.gif
+```bash
+Commands:
+	search, s           [args]
+	gif, id             [args]
+	random, rand, r     [args]
+	translate, trans, t [args]
+	trending, trend, tr [args]
 ```
 
+```bash
+GIPHY_LIMIT=4 giphy trending
+http://media0.giphy.com/media/kMM7XbRvSgpAA/giphy.gif
+http://media2.giphy.com/media/lgcaIKboeo8ZW/giphy.gif
+http://media2.giphy.com/media/vcyroBgx2nrby/giphy.gif
+http://media2.giphy.com/media/UVHUzM00JWsDu/giphy.gif
+```
 
 ## Examples
 
