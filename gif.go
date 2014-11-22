@@ -12,7 +12,7 @@ func (c *Client) GIF(id string) (GIF, error) {
 		return GIF{}, fmt.Errorf("Invalid giphy id: `%v`", id)
 	}
 
-	req, err := c.NewRequest("/" + id)
+	req, err := c.NewRequest("/gifs/" + id)
 	if err != nil {
 		return GIF{}, err
 	}

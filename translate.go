@@ -9,7 +9,7 @@ import (
 func (c *Client) Translate(args []string) (Translate, error) {
 	argsStr := strings.Join(args, " ")
 
-	req, err := c.NewRequest("/translate?s=" + argsStr)
+	req, err := c.NewRequest("/gifs/translate?s=" + argsStr)
 	if err != nil {
 		return Translate{}, err
 	}

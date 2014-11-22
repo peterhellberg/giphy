@@ -1,9 +1,13 @@
 package giphy
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 func (c *Client) Trending(args ...[]string) (Trending, error) {
-	req, err := c.NewRequest("/trending")
+	path := fmt.Sprintf("/gifs/trending?limit=%v", c.Limit)
+	req, err := c.NewRequest(path)
 	if err != nil {
 		return Trending{}, err
 	}

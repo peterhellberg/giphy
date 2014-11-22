@@ -53,7 +53,7 @@ func NewClient(httpClient *http.Client) *Client {
 			Scheme: Env("GIPHY_BASE_URL_SCHEME", "http"),
 			Host:   Env("GIPHY_BASE_URL_HOST", "api.giphy.com"),
 		},
-		BasePath:   Env("GIPHY_BASE_PATH", "/v1/gifs"),
+		BasePath:   Env("GIPHY_BASE_PATH", "/v1"),
 		UserAgent:  Env("GIPHY_USER_AGENT", "giphy.go"),
 		httpClient: httpClient,
 	}

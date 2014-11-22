@@ -9,7 +9,7 @@ import (
 func (c *Client) Random(args []string) (Random, error) {
 	argsStr := strings.Join(args, " ")
 
-	req, err := c.NewRequest("/random?tag=" + argsStr)
+	req, err := c.NewRequest("/gifs/random?tag=" + argsStr)
 	if err != nil {
 		return Random{}, err
 	}
