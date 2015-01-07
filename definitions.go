@@ -37,7 +37,7 @@ type Trending struct {
 	Pagination Pagination `json:"pagination"`
 }
 
-// Data
+// Data contains all the fields in a data response from the Giphy API
 type Data struct {
 	Type             string `json:"type"`
 	ID               string `json:"id"`
