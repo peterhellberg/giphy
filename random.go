@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// Random returns a random response from the Giphy API
 func (c *Client) Random(args []string) (Random, error) {
 	argsStr := strings.Join(args, " ")
 
