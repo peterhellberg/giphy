@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// Trending returns a trending response from the Giphy API
 func (c *Client) Trending(args ...[]string) (Trending, error) {
 	path := fmt.Sprintf("/gifs/trending?limit=%v", c.Limit)
 	req, err := c.NewRequest(path)

@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// GIF returns a ID response from the Giphy API
 func (c *Client) GIF(id string) (GIF, error) {
 	if strings.ContainsAny(id, "/&?") {
 		return GIF{}, fmt.Errorf("Invalid giphy id: `%v`", id)

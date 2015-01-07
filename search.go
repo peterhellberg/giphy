@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// Search returns a search response from the Giphy API
 func (c *Client) Search(args []string) (Search, error) {
 	argsStr := strings.Join(args, " ")
 

@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// Translate returns a translate response from the Giphy API
 func (c *Client) Translate(args []string) (Translate, error) {
 	argsStr := strings.Join(args, " ")
 
