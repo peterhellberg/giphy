@@ -33,7 +33,7 @@ http://media2.giphy.com/media/vcyroBgx2nrby/giphy.gif
 http://media2.giphy.com/media/UVHUzM00JWsDu/giphy.gif
 ```
 
-## Examples
+## Examples of using the library
 
 ### translate.go
 
@@ -92,3 +92,5 @@ func main() {
 ```bash
 GIPHY_API_KEY=dc6zaTOxFJmzC GIPHY_RATING=pg-13 go run example.go
 ```
+
+![Computer](http://media.giphy.com/media/MzX5hCfR5nP20/giphy.gif)
