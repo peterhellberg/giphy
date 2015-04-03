@@ -27,11 +27,11 @@ Commands:
 ```
 
 ```bash
-GIPHY_LIMIT=4 giphy trending
-http://media0.giphy.com/media/kMM7XbRvSgpAA/giphy.gif
-http://media2.giphy.com/media/lgcaIKboeo8ZW/giphy.gif
-http://media2.giphy.com/media/vcyroBgx2nrby/giphy.gif
-http://media2.giphy.com/media/UVHUzM00JWsDu/giphy.gif
+GIPHY_LIMIT=4 giphy search computer
+http://media3.giphy.com/media/wvHC7zyCedEI0/giphy.gif
+http://media3.giphy.com/media/gr8K2b72UefvO/giphy.gif
+http://media2.giphy.com/media/L2u68v1MmZv5m/giphy.gif
+http://media1.giphy.com/media/4WOs6Af0nOOeQ/giphy.gif
 ```
 
 ## Examples of using the library
