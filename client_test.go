@@ -70,7 +70,7 @@ func TestNewRequest(t *testing.T) {
 }
 
 func TestDo(t *testing.T) {
-	server, client := testServerAndClient(200, []byte(`{"foo": 123}`))
+	server, client := jsonServerAndClient(200, `{"foo": 123}`)
 	defer server.Close()
 
 	req, err := client.NewRequest("/")
@@ -87,13 +87,16 @@ func TestDo(t *testing.T) {
 	}
 }
 
-func testServerAndClient(code int, body []byte) (*httptest.Server, *Client) {
-	server := httptest.NewServer(http.HandlerFunc(
-		func(w http.ResponseWriter, r *http.Request) {
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(code)
-			w.Write(body)
-		}))
+func jsonServerAndClient(code int, body string) (*httptest.Server, *Client) {
+	return testServerAndClient(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(code)
+		w.Write([]byte(body))
+	})
+}
+
+func testServerAndClient(f func(http.ResponseWriter, *http.Request)) (*httptest.Server, *Client) {
+	server := httptest.NewServer(http.HandlerFunc(f))
 
 	transport := &http.Transport{
 		Proxy: func(req *http.Request) (*url.URL, error) {

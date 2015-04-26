@@ -3,7 +3,7 @@ package giphy
 import "testing"
 
 func TestGIF(t *testing.T) {
-	server, client := testServerAndClient(200, []byte(`{
+	server, client := jsonServerAndClient(200, `{
 		"data": {
 			"type": "gif",
 			"id": "feqkVgjJpYtjy",
@@ -13,7 +13,7 @@ func TestGIF(t *testing.T) {
 			"status": 200,
 			"msg": "OK"
 		}
-	}`))
+	}`)
 	defer server.Close()
 
 	if _, err := client.GIF("invalid?/id"); err == nil {
