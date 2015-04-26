@@ -97,9 +97,8 @@ func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, err
+		return resp, err
 	}
-
 	defer resp.Body.Close()
 
 	if v != nil {
