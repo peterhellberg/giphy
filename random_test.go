@@ -1,6 +1,9 @@
 package giphy
 
-import "testing"
+import (
+	"net/http"
+	"testing"
+)
 
 func TestRandom(t *testing.T) {
 	server, client := jsonServerAndClient(200, `{
@@ -27,6 +30,36 @@ func TestRandom(t *testing.T) {
 
 	if got, want := random.Data.Type, "gif"; got != want {
 		t.Errorf(`gif.Data.Type = %+v, want %+v`, got, want)
+	}
+}
+
+func TestRandomRequest(t *testing.T) {
+	var (
+		expectedPath     = "/v1/gifs/random"
+		expectedRawQuery = "api_key=dc6zaTOxFJmzC&rating=g&tag=bar+baz"
+	)
+
+	reqs := []http.Request{}
+
+	server, client := testServerAndClient(
+		func(w http.ResponseWriter, r *http.Request) {
+			reqs = append(reqs, *r)
+		},
+	)
+	defer server.Close()
+
+	client.Random([]string{"bar", "baz"})
+
+	if len(reqs) != 1 {
+		t.Errorf(`unexpected number of requests`)
+	}
+
+	if got := reqs[0].URL.Path; got != expectedPath {
+		t.Errorf(`reqs[0].URL.Path = %#v, want %#v`, got, expectedPath)
+	}
+
+	if got := reqs[0].URL.RawQuery; got != expectedRawQuery {
+		t.Errorf(`reqs[0].URL.RawQuery = %+v, want %+v`, got, expectedRawQuery)
 	}
 }
 
