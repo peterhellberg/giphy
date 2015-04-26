@@ -16,6 +16,10 @@ func TestGIF(t *testing.T) {
 	}`))
 	defer server.Close()
 
+	if _, err := client.GIF("invalid?/id"); err == nil {
+		t.Errorf(`expected error for GIF id: invalid?/id`)
+	}
+
 	gif, err := client.GIF("foo")
 	if err != nil {
 		t.Errorf(`unexpected error %v`, err)
