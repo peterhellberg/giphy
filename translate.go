@@ -2,7 +2,6 @@ package giphy
 
 import (
 	"encoding/json"
-	"errors"
 	"strings"
 )
 
@@ -22,12 +21,12 @@ func (c *Client) Translate(args []string) (Translate, error) {
 
 	// Check if the first character in Data is a [
 	if translate.RawData[0] == '[' {
-		return Translate{}, errors.New("no image found")
+		return Translate{}, ErrNoImageFound
 	}
 
 	err = json.Unmarshal(translate.RawData, &translate.Data)
 	if err != nil {
-		return Translate{}, errors.New("could not unmarshal JSON data")
+		return Translate{}, ErrCouldNotUnmarshalJSON
 	}
 
 	return translate, nil

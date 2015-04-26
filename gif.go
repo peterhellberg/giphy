@@ -2,7 +2,6 @@ package giphy
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"strings"
 )
@@ -24,7 +23,7 @@ func (c *Client) GIF(id string) (GIF, error) {
 	}
 
 	if gif.RawData == nil || gif.RawData[0] == '[' {
-		return GIF{}, errors.New("no image found")
+		return GIF{}, ErrNoImageFound
 	}
 
 	// Check if the first character in Data is a {
@@ -33,7 +32,7 @@ func (c *Client) GIF(id string) (GIF, error) {
 
 		err = json.Unmarshal(gif.RawData, &d)
 		if err != nil {
-			return GIF{}, errors.New("could not unmarshal JSON data")
+			return GIF{}, ErrCouldNotUnmarshalJSON
 		}
 
 		gif.Data = d
@@ -41,5 +40,5 @@ func (c *Client) GIF(id string) (GIF, error) {
 		return gif, nil
 	}
 
-	return GIF{}, errors.New("unknown error")
+	return GIF{}, ErrUnknown
 }

@@ -2,7 +2,6 @@ package giphy
 
 import (
 	"encoding/json"
-	"errors"
 	"strings"
 )
 
@@ -22,14 +21,14 @@ func (c *Client) Random(args []string) (Random, error) {
 
 	// Check if the first character in Data is a [
 	if random.RawData == nil || random.RawData[0] == '[' {
-		return Random{}, errors.New("no image found")
+		return Random{}, ErrNoImageFound
 	}
 
 	var d RandomData
 
 	err = json.Unmarshal(random.RawData, &d)
 	if err != nil {
-		return Random{}, errors.New("could not unmarshal JSON data")
+		return Random{}, ErrCouldNotUnmarshalJSON
 	}
 
 	random.Data = d

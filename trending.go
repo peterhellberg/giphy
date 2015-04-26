@@ -1,9 +1,6 @@
 package giphy
 
-import (
-	"errors"
-	"fmt"
-)
+import "fmt"
 
 // Trending returns a trending response from the Giphy API
 func (c *Client) Trending(args ...[]string) (Trending, error) {
@@ -19,7 +16,7 @@ func (c *Client) Trending(args ...[]string) (Trending, error) {
 	}
 
 	if len(res.Data) == 0 {
-		return res, errors.New("no trending images found")
+		return res, ErrNoTrendingImagesFound
 	}
 
 	return res, nil
