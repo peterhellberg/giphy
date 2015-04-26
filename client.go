@@ -50,7 +50,7 @@ func NewClient(httpClient *http.Client) *Client {
 		Rating: Env("GIPHY_RATING", "g"),
 		Limit:  EnvInt("GIPHY_LIMIT", 10),
 		BaseURL: &url.URL{
-			Scheme: Env("GIPHY_BASE_URL_SCHEME", "http"),
+			Scheme: Env("GIPHY_BASE_URL_SCHEME", "https"),
 			Host:   Env("GIPHY_BASE_URL_HOST", "api.giphy.com"),
 		},
 		BasePath:   Env("GIPHY_BASE_PATH", "/v1"),
