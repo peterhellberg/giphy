@@ -80,12 +80,7 @@ func TestDo(t *testing.T) {
 
 	v := map[string]int{}
 
-	resp, err := client.Do(req, &v)
-	if err != nil {
-		t.Errorf(`unexpected error %v`, err)
-	}
-
-	t.Errorf(`%v`, resp)
+	client.Do(req, &v)
 
 	if v["foo"] != 123 {
 		t.Errorf(`unexpected response %+v`, v)
