@@ -32,7 +32,7 @@ func (c *Client) GIF(id string) (GIF, error) {
 
 		err = json.Unmarshal(gif.RawData, &d)
 		if err != nil {
-			return GIF{}, ErrCouldNotUnmarshalJSON
+			return GIF{}, err
 		}
 
 		gif.Data = d

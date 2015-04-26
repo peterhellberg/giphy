@@ -26,7 +26,7 @@ func (c *Client) Translate(args []string) (Translate, error) {
 
 	err = json.Unmarshal(translate.RawData, &translate.Data)
 	if err != nil {
-		return Translate{}, ErrCouldNotUnmarshalJSON
+		return Translate{}, err
 	}
 
 	return translate, nil

@@ -28,7 +28,7 @@ func (c *Client) Random(args []string) (Random, error) {
 
 	err = json.Unmarshal(random.RawData, &d)
 	if err != nil {
-		return Random{}, ErrCouldNotUnmarshalJSON
+		return Random{}, err
 	}
 
 	random.Data = d
