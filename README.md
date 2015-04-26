@@ -3,6 +3,7 @@ giphy
 
 Go library for the [Giphy API](https://github.com/Giphy/GiphyAPI)
 
+[![Build Status](https://travis-ci.org/peterhellberg/giphy.svg?branch=master)](https://travis-ci.org/peterhellberg/giphy)
 [![GoDoc](https://godoc.org/github.com/peterhellberg/giphy?status.svg)](https://godoc.org/github.com/peterhellberg/giphy)
 [![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/peterhellberg/giphy#license-mit)
 
