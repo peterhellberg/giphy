@@ -33,3 +33,12 @@ func TestGIF(t *testing.T) {
 		t.Errorf(`gif.Data.Type = %+v, want %+v`, got, want)
 	}
 }
+
+func TestGIF_noImageFound(t *testing.T) {
+	server, client := jsonServerAndClient(200, `{"data":[]}`)
+	defer server.Close()
+
+	if _, err := client.GIF("foo"); err != ErrNoImageFound {
+		t.Errorf(`expected ErrNoImageFound, got %v`, err)
+	}
+}
