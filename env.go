@@ -11,6 +11,7 @@ func Env(key, fallback string) string {
 	if v != "" {
 		return v
 	}
+
 	return fallback
 }
 
