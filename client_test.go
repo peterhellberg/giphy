@@ -87,8 +87,12 @@ func TestDo(t *testing.T) {
 	}
 }
 
-func jsonServerAndClient(code int, body string) (*httptest.Server, *Client) {
+func jsonServerAndClient(code int, body string, requests ...*[]*http.Request) (*httptest.Server, *Client) {
 	return testServerAndClient(func(w http.ResponseWriter, r *http.Request) {
+		if len(requests) > 0 {
+			*requests[0] = append(*requests[0], r)
+		}
+
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(code)
 		w.Write([]byte(body))
