@@ -6,6 +6,7 @@ import (
 )
 
 func TestRandom(t *testing.T) {
+	requests := []*http.Request{}
 	server, client := jsonServerAndClient(200, `{
 		"data": {
 			"type": "gif",
@@ -16,7 +17,7 @@ func TestRandom(t *testing.T) {
 			"status": 200,
 			"msg": "OK"
 		}
-	}`)
+	}`, &requests)
 	defer server.Close()
 
 	random, err := client.Random([]string{"bar", "baz"})
@@ -30,6 +31,30 @@ func TestRandom(t *testing.T) {
 
 	if got, want := random.Data.Type, "gif"; got != want {
 		t.Errorf(`gif.Data.Type = %+v, want %+v`, got, want)
+	}
+
+	if got := len(requests); got != 1 {
+		t.Fatalf(`unexpected number of requests %d`, got)
+	}
+
+	r := requests[0]
+
+	if got := r.URL.Path; got != "/v1/gifs/random" {
+		t.Errorf(`unexpected path %#v`, got)
+	}
+
+	params := r.URL.Query()
+
+	if got := params.Get("api_key"); got != "dc6zaTOxFJmzC" {
+		t.Errorf(`unexpected api_key %#v`, got)
+	}
+
+	if got := params.Get("rating"); got != "g" {
+		t.Errorf(`unexpected rating %#v`, got)
+	}
+
+	if got := params.Get("tag"); got != "bar baz" {
+		t.Errorf(`unexpected tag %#v`, got)
 	}
 }
 
