@@ -11,4 +11,7 @@ var (
 
 	// ErrNoTrendingImagesFound is returned when no trending images were found
 	ErrNoTrendingImagesFound = errors.New("no trending images found")
+
+	// ErrNoRawData is returned if there was no data property in response
+	ErrNoRawData = errors.New("no raw data")
 )
