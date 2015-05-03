@@ -19,6 +19,10 @@ func (c *Client) Translate(args []string) (Translate, error) {
 		return Translate{}, err
 	}
 
+	if len(translate.RawData) == 0 {
+		return Translate{}, ErrNoRawData
+	}
+
 	// Check if the first character in Data is a [
 	if translate.RawData[0] == '[' {
 		return Translate{}, ErrNoImageFound
