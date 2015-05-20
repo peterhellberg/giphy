@@ -17,14 +17,11 @@ func Env(key, fallback string) string {
 
 // EnvBool returns a bool from the ENV, or fallback variable
 func EnvBool(key string, fallback bool) bool {
-	switch os.Getenv(key) {
-	case "true":
-		return true
-	case "false":
-		return false
-	default:
-		return fallback
+	if b, err := strconv.ParseBool(os.Getenv(key)); err == nil {
+		return b
 	}
+
+	return fallback
 }
 
 // EnvInt returns an int from the ENV, or fallback variable
