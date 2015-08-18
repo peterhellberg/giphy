@@ -2,6 +2,6 @@ language: go
 
 go:
   - 1.4.2
-  - 1.5beta1
+  - 1.5rc1
 
 sudo: false
