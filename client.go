@@ -8,7 +8,7 @@ import (
 )
 
 // DefaultClient is the default Giphy API client
-var DefaultClient = NewClient(nil)
+var DefaultClient = NewClient()
 
 // PublicBetaKey is the public beta key for the Giphy API
 var PublicBetaKey = "dc6zaTOxFJmzC"
@@ -38,9 +38,13 @@ type Client struct {
 }
 
 // NewClient returns a new Giphy API client.
-// If httpClient is nil, http.DefaultClient is used.
-func NewClient(httpClient *http.Client) *Client {
-	if httpClient == nil {
+// If no *http.Client were provided then http.DefaultClient is used.
+func NewClient(httpClients ...*http.Client) *Client {
+	var httpClient *http.Client
+
+	if len(httpClients) > 0 && httpClients[0] != nil {
+		httpClient = httpClients[0]
+	} else {
 		cloned := *http.DefaultClient
 		httpClient = &cloned
 	}
