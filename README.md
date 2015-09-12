@@ -54,9 +54,9 @@ func main() {
     return
   }
 
-  c := giphy.DefaultClient
+  g := giphy.DefaultClient
 
-  res, err := c.Translate(os.Args[1:])
+  res, err := g.Translate(os.Args[1:])
   if err != nil {
     fmt.Println(err)
     os.Exit(1)
