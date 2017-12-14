@@ -55,6 +55,11 @@ type Data struct {
 	Images           Images `json:"images"`
 }
 
+// MediaURL points directly to GIF image on media.giphy.com
+func (d Data) MediaURL() string {
+	return "https://media.giphy.com/media/" + d.ID + "/giphy.gif"
+}
+
 // RandomData represents data section in random response from the Giphy API
 type RandomData struct {
 	Type                         string   `json:"type"`
@@ -76,6 +81,11 @@ type RandomData struct {
 	Username                     string   `json:"username"`
 	Caption                      string   `json:"caption"`
 	Tags                         []string `json:"tags"`
+}
+
+// MediaURL points directly to GIF image on media.giphy.com
+func (rd RandomData) MediaURL() string {
+	return "https://media.giphy.com/media/" + rd.ID + "/giphy.gif"
 }
 
 // Images represents all the different types of images

@@ -62,7 +62,7 @@ func main() {
     os.Exit(1)
   }
 
-  fmt.Println(res.Data.URL)
+  fmt.Println(res.Data.MediaURL())
 }
 
 ```
@@ -83,7 +83,7 @@ func main() {
 
   if trending, err := g.Trending(); err == nil {
     for i, d := range trending.Data {
-      fmt.Println(i, "-", d.URL)
+      fmt.Println(i, "-", d.MediaURL())
     }
   }
 }
@@ -97,7 +97,7 @@ GIPHY_API_KEY=dc6zaTOxFJmzC GIPHY_RATING=pg-13 go run example.go
 
 ## License (MIT)
 
-Copyright (c) 2015 [Peter Hellberg](http://c7.se/)
+Copyright (c) 2015-2017 [Peter Hellberg](https://c7.se)
 
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
