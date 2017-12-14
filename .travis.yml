@@ -1,7 +1,8 @@
 language: go
 
 go:
-  - 1.5
-  - 1.4.2
+  - 1.9.2
+  - 1.8.5
+  - 1.10beta1
 
 sudo: false
