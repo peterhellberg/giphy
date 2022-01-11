@@ -16,7 +16,7 @@ to override the default configuration.
 
     Environment variable  | Default value
     ----------------------|--------------
-    GIPHY_API_KEY         | dc6zaTOxFJmzC
+    GIPHY_API_KEY         |
     GIPHY_RATING          | g
     GIPHY_LIMIT           | 10
     GIPHY_BASE_URL_SCHEME | http

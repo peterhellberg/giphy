@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	expectedAPIKey        = "dc6zaTOxFJmzC"
+	expectedAPIKey        = "test-api-key"
 	expectedLimit         = 10
 	expectedRating        = "g"
 	expectedBaseURLString = "https://api.giphy.com"
@@ -17,7 +17,7 @@ const (
 )
 
 func TestDefaultClient(t *testing.T) {
-	if got, want := DefaultClient.APIKey, expectedAPIKey; got != want {
+	if got, want := DefaultClient.APIKey, ""; got != want {
 		t.Errorf("DefaultClient.APIKey = %s, want %s", got, want)
 	}
 
@@ -47,8 +47,8 @@ func TestNewRequest(t *testing.T) {
 		s string
 		u string
 	}{
-		{"/foo", "https://api.giphy.com/v1/foo?api_key=dc6zaTOxFJmzC&rating=g"},
-		{"/bar", "https://api.giphy.com/v1/bar?api_key=dc6zaTOxFJmzC&rating=g"},
+		{"/foo", "https://api.giphy.com/v1/foo?api_key=&rating=g"},
+		{"/bar", "https://api.giphy.com/v1/bar?api_key=&rating=g"},
 	} {
 		req, err := DefaultClient.NewRequest(tt.s)
 		if err != nil {
@@ -107,7 +107,11 @@ func testServerAndClient(f func(http.ResponseWriter, *http.Request)) (*httptest.
 			return url.Parse(server.URL)
 		}}
 
-	client := NewClient(&http.Client{Transport: transport})
+	client := NewClient(
+		HTTPClient(&http.Client{Transport: transport}),
+		APIKey("test-api-key"),
+	)
+
 	client.BaseURL, _ = url.Parse(server.URL)
 
 	return server, client

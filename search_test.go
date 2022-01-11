@@ -42,7 +42,7 @@ func TestSearch(t *testing.T) {
 
 		params := r.URL.Query()
 
-		if got := params.Get("api_key"); got != "dc6zaTOxFJmzC" {
+		if got := params.Get("api_key"); got != "test-api-key" {
 			t.Errorf(`unexpected api_key %#v`, got)
 		}
 

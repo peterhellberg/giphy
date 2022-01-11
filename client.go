@@ -10,9 +10,6 @@ import (
 // DefaultClient is the default Giphy API client
 var DefaultClient = NewClient()
 
-// PublicBetaKey is the public beta key for the Giphy API
-var PublicBetaKey = "dc6zaTOxFJmzC"
-
 // A Client communicates with the Giphy API.
 type Client struct {
 	// APIKey is the key used for requests to the Giphy API
@@ -38,19 +35,12 @@ type Client struct {
 }
 
 // NewClient returns a new Giphy API client.
-// If no *http.Client were provided then http.DefaultClient is used.
-func NewClient(httpClients ...*http.Client) *Client {
-	var httpClient *http.Client
-
-	if len(httpClients) > 0 && httpClients[0] != nil {
-		httpClient = httpClients[0]
-	} else {
-		cloned := *http.DefaultClient
-		httpClient = &cloned
-	}
+// If HTTPClient were not provided then http.DefaultClient is used.
+func NewClient(options ...Option) *Client {
+	cloned := *http.DefaultClient
 
 	c := &Client{
-		APIKey: Env("GIPHY_API_KEY", PublicBetaKey),
+		APIKey: Env("GIPHY_API_KEY", ""),
 		Rating: Env("GIPHY_RATING", "g"),
 		Limit:  EnvInt("GIPHY_LIMIT", 10),
 		BaseURL: &url.URL{
@@ -59,7 +49,11 @@ func NewClient(httpClients ...*http.Client) *Client {
 		},
 		BasePath:   Env("GIPHY_BASE_PATH", "/v1"),
 		UserAgent:  Env("GIPHY_USER_AGENT", "giphy.go"),
-		httpClient: httpClient,
+		httpClient: &cloned,
+	}
+
+	for _, option := range options {
+		option(c)
 	}
 
 	return c

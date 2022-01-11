@@ -45,7 +45,7 @@ func TestRandom(t *testing.T) {
 
 	params := r.URL.Query()
 
-	if got := params.Get("api_key"); got != "dc6zaTOxFJmzC" {
+	if got := params.Get("api_key"); got != "test-api-key" {
 		t.Errorf(`unexpected api_key %#v`, got)
 	}
 
@@ -61,7 +61,7 @@ func TestRandom(t *testing.T) {
 func TestRandomRequest(t *testing.T) {
 	var (
 		expectedPath     = "/v1/gifs/random"
-		expectedRawQuery = "api_key=dc6zaTOxFJmzC&rating=g&tag=bar+baz"
+		expectedRawQuery = "api_key=test-api-key&rating=g&tag=bar+baz"
 	)
 
 	reqs := []http.Request{}

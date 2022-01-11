@@ -3,10 +3,11 @@ giphy
 
 Go library for the [Giphy API](https://github.com/Giphy/GiphyAPI)
 
-[![Build Status](https://travis-ci.org/peterhellberg/giphy.svg?branch=master)](https://travis-ci.org/peterhellberg/giphy)
 [![Go Report Card](https://goreportcard.com/badge/github.com/peterhellberg/giphy)](https://goreportcard.com/report/github.com/peterhellberg/giphy)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/peterhellberg/giphy)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://pkg.go.dev/github.com/peterhellberg/giphy)
 [![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/peterhellberg/giphy#license-mit)
+
+> You will need an API key from Giphy, instructions to get one can be found here: <https://developers.giphy.com/docs/api#quick-start-guide>
 
 ## Command line tool
 
@@ -29,7 +30,7 @@ Commands:
 ```
 
 ```bash
-GIPHY_LIMIT=4 giphy search computer
+GIPHY_API_KEY=[your-api-key] GIPHY_LIMIT=4 giphy search computer
 http://media3.giphy.com/media/wvHC7zyCedEI0/giphy.gif
 http://media3.giphy.com/media/gr8K2b72UefvO/giphy.gif
 http://media2.giphy.com/media/L2u68v1MmZv5m/giphy.gif
@@ -93,7 +94,7 @@ func main() {
 ### Run an example
 
 ```bash
-GIPHY_API_KEY=dc6zaTOxFJmzC GIPHY_RATING=pg-13 go run example.go
+GIPHY_API_KEY=[your-api-key] GIPHY_RATING=pg-13 go run example.go
 ```
 
 ## License (MIT)
