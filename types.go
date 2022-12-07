@@ -39,20 +39,21 @@ type Trending struct {
 
 // Data contains all the fields in a data response from the Giphy API
 type Data struct {
-	Type             string `json:"type"`
-	ID               string `json:"id"`
-	URL              string `json:"url"`
-	BitlyGifURL      string `json:"bitly_gif_url"`
-	BitlyURL         string `json:"bitly_url"`
-	EmbedURL         string `json:"embed_url"`
-	Username         string `json:"username"`
-	Source           string `json:"source"`
-	Rating           string `json:"rating"`
-	Caption          string `json:"caption"`
-	ContentURL       string `json:"content_url"`
-	ImportDatetime   string `json:"import_datetime"`
-	TrendingDatetime string `json:"trending_datetime"`
-	Images           Images `json:"images"`
+	Type             string    `json:"type"`
+	ID               string    `json:"id"`
+	URL              string    `json:"url"`
+	BitlyGifURL      string    `json:"bitly_gif_url"`
+	BitlyURL         string    `json:"bitly_url"`
+	EmbedURL         string    `json:"embed_url"`
+	Username         string    `json:"username"`
+	Source           string    `json:"source"`
+	Rating           string    `json:"rating"`
+	Caption          string    `json:"caption"`
+	ContentURL       string    `json:"content_url"`
+	ImportDatetime   string    `json:"import_datetime"`
+	TrendingDatetime string    `json:"trending_datetime"`
+	Images           Images    `json:"images"`
+	Analytics        Analytics `json:"analytics"`
 }
 
 // MediaURL points directly to GIF image on media.giphy.com
@@ -125,4 +126,14 @@ type Pagination struct {
 type Meta struct {
 	Status int    `json:"status"`
 	Msg    string `json:"msg"`
+}
+
+// Analytics urls to send back to giphy
+type ActionUrl struct {
+	URL string `json:"url"`
+}
+type Analytics struct {
+	Onload  ActionUrl  `json:"onload"`
+	Onclick ActionUrl `json:"onclick"`
+	Onsent  ActionUrl  `json:"onsent"`
 }
