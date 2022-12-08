@@ -128,12 +128,14 @@ type Meta struct {
 	Msg    string `json:"msg"`
 }
 
-// Analytics urls to send back to giphy
-type ActionUrl struct {
+// ActionURL contains a pingback URL for an action such as SEEN, CLICK or SENT
+type ActionURL struct {
 	URL string `json:"url"`
 }
+
+// Analytics represents the analytics section in a Giphy API response
 type Analytics struct {
-	Onload  ActionUrl  `json:"onload"`
-	Onclick ActionUrl `json:"onclick"`
-	Onsent  ActionUrl  `json:"onsent"`
+	Onload  ActionURL `json:"onload"`
+	Onclick ActionURL `json:"onclick"`
+	Onsent  ActionURL `json:"onsent"`
 }
